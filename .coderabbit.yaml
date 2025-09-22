@@ -1,213 +1,170 @@
 # yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json
 
+# 한국어 설정 강화
 language: 'ko-KR'
 early_access: false
 
 # 전체적인 리뷰 설정
 reviews:
-  profile: 'assertive' # 더 엄격한 리뷰를 위해 assertive 사용
+  profile: 'assertive'
   request_changes_workflow: false
+  base_branches:
+    - '**'
   high_level_summary: true
   high_level_summary_placeholder: "## 📋 변경사항 요약\n\n{summary}"
   poem: false
-  review_status: true
+  review_status: false # 영어 상태 메시지 숨김
   collapse_walkthrough: false
   auto_review:
     enabled: true
-    drafts: true # 드래프트 PR도 리뷰
+    drafts: true
 
-  # 경로별 세부 리뷰 지침
+  # 한국어 리뷰를 위한 글로벌 지시사항
+  instructions: |
+    모든 리뷰 댓글은 반드시 한국어로 작성해주세요.
+    코드 리뷰 시 다음 사항들을 한국어로 설명해주세요:
+    - 발견된 이슈와 개선 사항
+    - 제안하는 해결 방법
+    - 코드 품질 개선 방향
+    - 베스트 프랙티스 가이드
+
+    리뷰 톤은 정중하고 건설적으로, 초급 개발자도 이해할 수 있도록 친절하게 설명해주세요.
+
+  # 경로별 세부 리뷰 지침 (한국어 강화)
   path_instructions:
     # Next.js App Router 페이지
     - path: 'src/app/**/page.tsx'
       instructions: |
-        - Next.js 15 App Router 규칙 준수 확인
-        - 서버 컴포넌트와 클라이언트 컴포넌트 적절한 분리
+        **반드시 한국어로 리뷰해주세요.**
+        다음 사항들을 확인하고 한국어로 피드백해주세요:
+        - Next.js 15 App Router 규칙 준수 여부
+        - 서버 컴포넌트와 클라이언트 컴포넌트의 적절한 분리
         - 메타데이터 API 사용 확인 (generateMetadata 함수)
-        - 적절한 loading.tsx, error.tsx 파일 존재 여부
-        - SEO 최적화 확인 (제목, 설명, 구조화된 데이터)
-        - 페이지별 성능 최적화 (이미지, 폰트, 번들 크기)
+        - loading.tsx, error.tsx 파일 존재 여부
+        - SEO 최적화 상태 (제목, 설명, 구조화된 데이터)
+        - 성능 최적화 (이미지, 폰트, 번들 크기)
+
+        문제점 발견 시 구체적인 개선 방안을 한국어로 제시해주세요.
 
     # Next.js 레이아웃 파일
     - path: 'src/app/**/layout.tsx'
       instructions: |
-        - 적절한 HTML 구조와 시맨틱 마크업
+        **모든 피드백을 한국어로 작성해주세요.**
+        다음 요소들을 검토하고 한국어로 설명해주세요:
+        - HTML 구조와 시맨틱 마크업의 적절성
         - 메타데이터 설정의 완전성
-        - 폰트 최적화 (next/font 사용)
-        - 전역 스타일 적용 방식
+        - 폰트 최적화 (next/font 사용 여부)
+        - 전역 스타일 적용 방식의 적절성
         - children prop 타입 안정성
 
     # API Routes (App Router)
     - path: 'src/app/api/**/*.ts'
       instructions: |
-        - NextRequest, NextResponse 적절한 사용
-        - HTTP 메서드별 적절한 핸들러 분리
-        - 에러 핸들링과 상태 코드 정확성
-        - 입력값 검증 (zod 스키마 사용 권장)
-        - 인증/권한 확인 로직
-        - 데이터베이스 쿼리 최적화
-        - CORS 설정 필요 시 확인
+        **리뷰 댓글은 반드시 한국어로 작성해주세요.**
+        API 라우트 검토 시 다음 사항들을 한국어로 피드백해주세요:
+        - NextRequest, NextResponse의 적절한 사용
+        - HTTP 메서드별 핸들러 분리 상태
+        - 에러 핸들링과 상태 코드의 정확성
+        - 입력값 검증 로직 (zod 스키마 사용 권장)
+        - 인증/권한 확인 로직의 적절성
+        - 데이터베이스 쿼리 최적화 여부
+        - CORS 설정 필요성 검토
 
     # FSD Architecture - App Layer
     - path: 'src/app/**/*.{ts,tsx}'
       instructions: |
-        - FSD 아키텍처 app 레이어 규칙 준수
-        - 비즈니스 로직이 app 레이어에 포함되지 않도록 확인
-        - 다른 레이어에 대한 의존성 규칙 확인
-        - 글로벌 providers와 초기화 로직만 포함
+        **FSD 아키텍처 리뷰를 한국어로 진행해주세요.**
+        app 레이어 검토 사항:
+        - FSD 아키텍처 app 레이어 규칙 준수 여부
+        - 비즈니스 로직이 app 레이어에 포함되지 않았는지 확인
+        - 다른 레이어에 대한 의존성 규칙 준수 여부
+        - 글로벌 providers와 초기화 로직만 포함되었는지 확인
 
-    # FSD Architecture - Widgets Layer
-    - path: 'src/widgets/**/*.{ts,tsx}'
-      instructions: |
-        - 위젯의 독립성과 재사용성 확인
-        - features와 entities에만 의존
-        - UI 조합 로직의 적절성
-        - props 인터페이스 명확성
+        위반 사항 발견 시 올바른 구조를 한국어로 제안해주세요.
 
     # FSD Architecture - Features Layer
     - path: 'src/features/**/*.{ts,tsx}'
       instructions: |
-        - 단일 기능에 대한 완전한 구현
-        - entities와 shared에만 의존
-        - 비즈니스 로직의 응집성
-        - 외부 API 호출 로직 검토
-        - 상태 관리 패턴 일관성
+        **기능(Features) 레이어 리뷰를 한국어로 작성해주세요.**
+        확인해야 할 사항들:
+        - 단일 기능에 대한 완전한 구현 여부
+        - entities와 shared에만 의존하는지 확인
+        - 비즈니스 로직의 응집성 검토
+        - 외부 API 호출 로직의 적절성
+        - 상태 관리 패턴의 일관성
 
-    # FSD Architecture - Entities Layer
-    - path: 'src/entities/**/*.{ts,tsx}'
-      instructions: |
-        - 도메인 모델의 정확성
-        - 데이터 변환 로직 검토
-        - 타입 안정성 확인
-        - 비즈니스 규칙 구현 검토
-        - shared 레이어에만 의존
-
-    # FSD Architecture - Shared Layer
-    - path: 'src/shared/**/*.{ts,tsx}'
-      instructions: |
-        - 재사용 가능한 유틸리티와 컴포넌트
-        - 다른 FSD 레이어에 의존하지 않음
-        - API 클라이언트와 공통 타입 정의
-        - 디자인 시스템 컴포넌트 일관성
+        개선 사항이 있다면 구체적인 해결책을 한국어로 제시해주세요.
 
     # TypeScript 파일 전반
     - path: '**/*.{ts,tsx}'
       instructions: |
-        - 엄격한 TypeScript 타입 체크
-        - any 타입 사용 금지 (정말 필요한 경우 unknown 사용)
-        - 적절한 제네릭 사용과 타입 추론
-        - 인터페이스 vs 타입 별칭 적절한 선택
+        **TypeScript 코드 리뷰를 한국어로 진행해주세요.**
+        다음 사항들을 한국어로 검토하고 피드백해주세요:
+        - 엄격한 TypeScript 타입 체크 준수
+        - any 타입 사용 금지 (필요시 unknown 사용 권장)
+        - 제네릭과 타입 추론의 적절한 사용
+        - 인터페이스 vs 타입 별칭의 적절한 선택
         - 유니온 타입과 리터럴 타입 활용
         - 타입 가드 함수 구현 확인
-        - 옵셔널 체이닝과 nullish coalescing 적절한 사용
+        - 옵셔널 체이닝과 nullish coalescing의 적절한 사용
+
+        타입 관련 문제 발견 시 올바른 타입 정의를 한국어로 설명해주세요.
 
     # React 컴포넌트
     - path: '**/*.tsx'
       instructions: |
+        **React 컴포넌트 리뷰를 한국어로 작성해주세요.**
+        검토할 사항들:
         - 함수형 컴포넌트 사용 (클래스 컴포넌트 금지)
         - React 19 새로운 기능 활용 (use hook, Actions 등)
-        - 적절한 Hook 사용 (useState, useEffect, useCallback, useMemo)
-        - Props 인터페이스 명확한 정의
+        - Hook 사용의 적절성 (useState, useEffect, useCallback, useMemo)
+        - Props 인터페이스의 명확한 정의
         - 컴포넌트 크기와 복잡도 관리
-        - 접근성 (a11y) 속성 포함
-        - forwardRef 사용 시 타입 안정성
-        - 성능 최적화 (memo, useMemo, useCallback 적절한 사용)
+        - 접근성 (a11y) 속성 포함 여부
+        - 성능 최적화 (memo, useMemo, useCallback의 적절한 사용)
 
-    # Tailwind CSS 스타일링
-    - path: '**/*.{tsx,ts}'
-      instructions: |
-        - Tailwind 유틸리티 클래스 우선 사용
-        - 인라인 스타일 사용 금지
-        - 일관된 spacing과 sizing 스케일 사용
-        - 커스텀 CSS 클래스 최소화
-        - clsx 또는 tw 유틸리티로 조건부 클래스 관리
-        - Tailwind 설정 파일의 커스텀 색상/폰트 활용
+        개선점이 있다면 이유와 함께 한국어로 설명해주세요.
 
     # TanStack Query 관련 파일
     - path: '**/*{query,queries,api}.{ts,tsx}'
       instructions: |
-        - 쿼리 키 팩토리 패턴 사용 (예: userQueries.all(), userQueries.detail(id))
-        - 적절한 staleTime과 cacheTime 설정
-        - 에러 핸들링 전략 (Error Boundary와 연동)
-        - 낙관적 업데이트 구현 시 롤백 로직 확인
-        - useQuery, useMutation, useInfiniteQuery 적절한 선택
-        - enabled 옵션으로 조건부 쿼리 실행
-        - onSuccess, onError 콜백보다 리액트 패턴 사용 권장
-        - QueryClient 설정의 적절성 (retry, refetchOnWindowFocus 등)
-        - 서버 상태와 클라이언트 상태 명확한 분리
-        - React Suspense와의 호환성 고려
+        **TanStack Query 코드를 한국어로 리뷰해주세요.**
+        확인할 사항들:
+        - 쿼리 키 팩토리 패턴 사용 여부 (예: userQueries.all())
+        - staleTime과 cacheTime의 적절한 설정
+        - 에러 핸들링 전략 (Error Boundary 연동)
+        - 낙관적 업데이트 시 롤백 로직 확인
+        - 쿼리 훅의 적절한 선택 (useQuery, useMutation, useInfiniteQuery)
+        - enabled 옵션을 통한 조건부 쿼리 실행
+        - 서버 상태와 클라이언트 상태의 명확한 분리
 
-    # TanStack Query Hooks
-    - path: '**/hooks/use*{Query,Mutation,Infinite}*.{ts,tsx}'
-      instructions: |
-        - 커스텀 훅의 단일 책임 원칙 준수
-        - 제네릭 타입 활용으로 타입 안전성 확보
-        - 쿼리 키와 쿼리 함수의 일관성
-        - 적절한 select 옵션 사용으로 렌더링 최적화
-        - invalidateQueries와 setQueryData 적절한 사용
-        - 무한 스크롤 구현 시 hasNextPage, fetchNextPage 확인
-        - placeholderData vs initialData 적절한 선택
-        - 에러 상태 처리와 재시도 로직
+        최적화 방안이 있다면 구체적인 예시와 함께 한국어로 제안해주세요.
 
     # Zustand Store 파일
     - path: '**/store{s,}/**/*.{ts,tsx}'
       instructions: |
-        - 스토어 슬라이스 패턴 적절한 사용
+        **Zustand 스토어 코드를 한국어로 리뷰해주세요.**
+        검토 사항들:
+        - 스토어 슬라이스 패턴의 적절한 사용
         - 불변성 유지 (immer 미들웨어 사용 권장)
         - 액션과 상태의 명확한 분리
         - 타입 안전성 확보 (StateCreator 타입 활용)
         - persist 미들웨어 사용 시 버전 관리와 마이그레이션
         - 스토어 구독 최적화 (선택적 구독)
-        - devtools 미들웨어 활용
         - 비동기 액션 처리 방식
         - 스토어 간 의존성 최소화
-        - shallow 비교 적절한 사용
 
-    # Zustand Hooks 및 Selector
-    - path: '**/hooks/use*{Store,State}*.{ts,tsx}'
-      instructions: |
-        - useShallow 훅 적절한 사용으로 불필요한 리렌더링 방지
-        - 셀렉터 함수의 메모이제이션
-        - 조건부 스토어 구독 패턴
-        - 스토어 리셋 및 초기화 로직
-        - 타입 추론 최적화
-        - 스토어 액션 바인딩 패턴
+        문제점 발견 시 개선된 코드 예시를 한국어 설명과 함께 제공해주세요.
 
-    # 상태 관리 아키텍처
-    - path: '**/store{s,}/**/*'
-      instructions: |
-        - 서버 상태(TanStack Query)와 클라이언트 상태(Zustand) 명확한 분리
-        - 전역 상태 vs 로컬 상태 적절한 선택
-        - 상태 정규화 패턴 (엔티티 기반 구조)
-        - 상태 동기화 전략
-        - 에러 상태와 로딩 상태 일관된 관리
-        - 상태 업데이트 패턴의 일관성
-
-    # API Layer와 상태 관리 연동
-    - path: '**/api/**/*.{ts,tsx}'
-      instructions: |
-        - API 클라이언트와 TanStack Query 연동 최적화
-        - 에러 처리 중앙집중화
-        - 인터셉터를 통한 인증 토큰 관리
-        - 요청 중복 제거 및 캐싱 전략
-        - 타입 안전한 API 응답 처리
-        - 오프라인 상태 대응
-
-    # 설정 파일들
-    - path: '*.config.{js,ts,mjs}'
-      instructions: |
-        - Next.js 설정 최적화
-        - Tailwind 설정 커스터마이징 검토
-        - TypeScript 컴파일러 옵션 엄격성
-        - ESLint/Prettier 규칙 일관성
-        - 번들 최적화 설정
-
-# 채팅 기능 활성화
+# 채팅 기능 활성화 (한국어)
 chat:
   auto_reply: true
+  instructions: |
+    채팅 시에도 반드시 한국어로 대화해주세요.
+    기술적인 질문에 대해서는 초보자도 이해할 수 있도록 친절하게 설명해주세요.
+    코드 예시를 제공할 때는 한국어 주석을 포함해주세요.
 
 # 통합 설정
 integrations:
-  # GitHub PR 템플릿에 CodeRabbit 섹션 추가 권장
   github:
     enable_auto_merge: false
