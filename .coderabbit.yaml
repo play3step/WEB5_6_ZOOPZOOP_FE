@@ -6,7 +6,7 @@ early_access: false
 # 전체적인 리뷰 설정
 reviews:
   profile: 'assertive' # 더 엄격한 리뷰를 위해 assertive 사용
-  request_changes_workflow: false // 강제성 안함
+  request_changes_workflow: false
   high_level_summary: true
   high_level_summary_placeholder: "## 📋 변경사항 요약\n\n{summary}"
   poem: false
