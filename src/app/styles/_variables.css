@@ -1,0 +1,62 @@
+:root {
+  /* Orange */
+  --org: #ff9354;
+
+  /* Grey */
+  --grey-light: #f2f2f2;
+  --grey-light-hover: #ececec;
+  --grey-light-active: #d7d7d7;
+  --grey-normal: #7d7d7d;
+  --grey-normal-hover: #717171;
+  --grey-normal-active: #646464;
+  --grey-dark: #5e5e5e;
+  --grey-dark-hover: #4b4b4b;
+  --grey-dark-active: #383838;
+  --grey-darker: #2c2c2c;
+
+  /* Green */
+  --green-light: #e6f7ef;
+  --green-light-hover: #d9f2e7;
+  --green-light-active: #b0e5ce;
+  --green-normal: #01ab62;
+  --green-normal-hover: #019a58;
+  --green-normal-active: #01894e;
+  --green-dark: #01804a;
+  --green-dark-hover: #01673b;
+  --green-dark-active: #004d2c;
+  --green-darker: #003c22;
+
+  /* shadcn/ui 기본 변수들 */
+  --radius: 0.625rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
