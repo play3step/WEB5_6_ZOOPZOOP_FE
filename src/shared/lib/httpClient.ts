@@ -1,4 +1,4 @@
-const baseUrl = process.env.NEXT_API_URL || ''
+const API_BASE_URL = process.env.API_URL || ''
 
 const createFetchOptions = (
   method: string,
@@ -16,8 +16,19 @@ const createFetchOptions = (
 })
 
 const handleResponse = async <T>(response: Response): Promise<T> => {
-  const data = await response.json()
-  return data
+  if (!response.ok) {
+    switch (response.status) {
+      case 401:
+        throw new Error('인증이 필요합니다')
+      case 403:
+        throw new Error('권한이 없습니다')
+      case 404:
+        throw new Error('요청한 리소스를 찾을 수 없습니다')
+      case 500:
+        throw new Error('서버 내부 오류가 발생했습니다')
+    }
+  }
+  return response.json()
 }
 
 export const httpClient = {
@@ -27,9 +38,12 @@ export const httpClient = {
     data?: unknown,
     options?: RequestInit
   ): Promise<T> {
-    const url = `${baseUrl}${endpoint}`
-    const fetchOptions = createFetchOptions(method, data, options)
-    const response = await fetch(url, fetchOptions)
+    const { ...fetchOptions } = options || {}
+    const url = `${API_BASE_URL}${endpoint}`
+
+    const requestOptions = createFetchOptions(method, data, fetchOptions)
+    const response = await fetch(url, requestOptions)
+
     return handleResponse<T>(response)
   },
 
