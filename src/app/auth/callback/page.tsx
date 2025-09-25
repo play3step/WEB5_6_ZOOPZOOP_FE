@@ -9,7 +9,7 @@ const AuthCallbackPage = () => {
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search)
-    const isSuccess = params.get('success')
+    const isSuccess = Boolean(params.get('success'))
 
     if (isSuccess) {
       setMessage('로그인 성공! 잠시간 기다려주세요..')
