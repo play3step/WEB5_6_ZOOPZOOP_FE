@@ -1,5 +1,3 @@
-// import { fetchNews } from '@/entities/news'
-import { delay } from '@/shared/lib'
 import Pagination from '@/shared/ui/pagination/Pagination'
 import { NewsGrid } from '@/widgets/news-section'
 import { Metadata } from 'next'
@@ -11,9 +9,6 @@ export const metadata: Metadata = {
 }
 
 export default async function News() {
-  // const news = await fetchNews()
-
-  await delay(1000)
   return (
     <div className="w-full flex flex-col p-10 min-h-[calc(100vh-72px)]">
       <div className="flex-1">

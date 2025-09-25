@@ -1,10 +1,18 @@
 const API_BASE_URL = process.env.API_URL || ''
 
+interface NextFetchOptions extends RequestInit {
+  next?: {
+    revalidate?: number | false
+    tags?: string[]
+  }
+  cache?: 'force-cache' | 'no-store'
+}
+
 const createFetchOptions = (
   method: string,
   data?: unknown,
-  options?: RequestInit
-): RequestInit => ({
+  options?: NextFetchOptions
+): NextFetchOptions => ({
   method,
   credentials: 'include',
   headers: {
@@ -36,7 +44,7 @@ export const httpClient = {
     method: string,
     endpoint: string,
     data?: unknown,
-    options?: RequestInit
+    options?: NextFetchOptions
   ): Promise<T> {
     const { ...fetchOptions } = options || {}
     const url = `${API_BASE_URL}${endpoint}`
@@ -47,14 +55,14 @@ export const httpClient = {
     return handleResponse<T>(response)
   },
 
-  async get<T>(endpoint: string, options?: RequestInit): Promise<T> {
+  async get<T>(endpoint: string, options?: NextFetchOptions): Promise<T> {
     return this.request<T>('GET', endpoint, undefined, options)
   },
 
   async post<T>(
     endpoint: string,
     data?: unknown,
-    options?: RequestInit
+    options?: NextFetchOptions
   ): Promise<T> {
     return this.request<T>('POST', endpoint, data, options)
   },
@@ -62,7 +70,7 @@ export const httpClient = {
   async put<T>(
     endpoint: string,
     data?: unknown,
-    options?: RequestInit
+    options?: NextFetchOptions
   ): Promise<T> {
     return this.request<T>('PUT', endpoint, data, options)
   },
@@ -70,12 +78,12 @@ export const httpClient = {
   async patch<T>(
     endpoint: string,
     data?: unknown,
-    options?: RequestInit
+    options?: NextFetchOptions
   ): Promise<T> {
     return this.request<T>('PATCH', endpoint, data, options)
   },
 
-  async delete<T>(endpoint: string, options?: RequestInit): Promise<T> {
+  async delete<T>(endpoint: string, options?: NextFetchOptions): Promise<T> {
     return this.request<T>('DELETE', endpoint, undefined, options)
   }
 }
