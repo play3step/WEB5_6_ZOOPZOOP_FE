@@ -9,3 +9,6 @@ export { useModalStore } from './modal-store'
 
 // 딜레이 함수
 export { delay } from './delay'
+
+// API 클라이언트
+export { httpClient } from './httpClient'
