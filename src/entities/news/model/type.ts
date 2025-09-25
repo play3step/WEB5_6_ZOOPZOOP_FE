@@ -1,8 +1,15 @@
+export interface NewsResponse {
+  status: 'string'
+  msg: 'string'
+  data: {
+    total: number
+    items: News[]
+  }
+}
+
 export interface News {
-  id: number
   title: string
-  content: string
-  imageUrl: string
-  createdAt: Date
-  updatedAt: Date
+  link: string
+  description: string
+  pubDate: string
 }
