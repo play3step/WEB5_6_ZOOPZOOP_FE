@@ -1,1 +1,1 @@
-export { GoogleAuthButton, KakaoAuthButton } from './auth-button'
+export { default as AuthButton } from './AuthButton'
