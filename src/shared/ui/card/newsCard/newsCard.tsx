@@ -18,7 +18,7 @@ export const NewsCard = ({
 }: Props) => {
   return (
     <div className="w-[320px] h-[371px] rounded-lg shadow-md bg-white">
-      {imageUrl && (
+      {imageUrl ? (
         <Image
           src={imageUrl}
           alt="news"
@@ -26,8 +26,9 @@ export const NewsCard = ({
           height={200}
           className="object-cover aspect-video"
         />
+      ) : (
+        <div className="w-full h-[200px] bg-gray-200"></div>
       )}
-      <div className="w-full h-[200px] bg-gray-200"></div>
 
       <div className="p-4 flex flex-col gap-3">
         <div className="flex items-center justify-between">
