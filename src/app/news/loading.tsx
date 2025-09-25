@@ -20,7 +20,7 @@ export default function NewsLoading() {
 
 const NewsCardSkeleton = () => {
   return (
-    <div className="w-[360px] h-[371px] rounded-lg shadow-md bg-white overflow-hidden">
+    <div className="w-[320px] h-[371px] rounded-lg shadow-md bg-white overflow-hidden">
       <div className="w-full h-[200px] bg-gray-200 animate-pulse"></div>
 
       <div className="p-4 flex flex-col gap-3">

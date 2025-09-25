@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import { Badge } from '../../badge'
+import dayjs from 'dayjs'
 
 interface Props {
   title: string
@@ -34,7 +35,8 @@ export const NewsCard = ({
         <div className="flex items-center justify-between">
           <Badge name={category || ''} />
           <p className="text-xs text-gray-normal">
-            {createdAt || '2025.01.01'}
+            {dayjs(createdAt).format('YYYY.MM.DD. HH:mm') ||
+              '2025.01.01. 00:00'}
           </p>
         </div>
         <div className="flex flex-col gap-1">
