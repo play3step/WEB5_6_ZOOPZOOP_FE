@@ -1,11 +1,14 @@
-import { fetchNews } from '@/entities/news'
+import { News } from '@/entities/news'
 import { NewsCard } from '@/shared/ui/card'
 
-export const NewsGrid = async () => {
-  const news = await fetchNews()
+interface Props {
+  news: News[]
+}
+
+export const NewsGrid = async ({ news }: Props) => {
   return (
     <div className="flex flex-wrap gap-4">
-      {news.data.items.map(item => (
+      {news.map(item => (
         <NewsCard
           key={item.title}
           title={item.title}
