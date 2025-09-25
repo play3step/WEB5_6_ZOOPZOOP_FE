@@ -16,7 +16,7 @@ const LoginPage = () => {
           마음에 드는 페이지, 놓치지 말고 줍줍하세요!
         </span>
       </div>
-      <div className="flex flex-col w-[340px] gap-3">
+      <div className="flex flex-col w-[340px] gap-3.5">
         <KakaoAuthButton />
         <GoogleAuthButton />
       </div>

@@ -14,7 +14,7 @@ const AuthButton = ({ className, children, icon, socialType }: Props) => {
       type="button"
       aria-label={`${socialType} 소셜 로그인 버튼`}
       className={tw(
-        'flex-center gap-3 border py-5 rounded-lg w-full text-base font-bold cursor-pointer active:scale-[0.98] shadow-sm',
+        'flex-center gap-3 border py-3.5 rounded-lg w-full text-base font-bold cursor-pointer active:scale-[0.98] shadow-sm',
         className
       )}>
       <Image
