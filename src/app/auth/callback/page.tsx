@@ -1,15 +1,15 @@
 'use client'
 
-import { useRouter, useSearchParams } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
 const AuthCallbackPage = () => {
   const router = useRouter()
-  const searchParams = useSearchParams()
   const [message, setMessage] = useState('')
 
   useEffect(() => {
-    const isSuccess = searchParams.get('success')
+    const params = new URLSearchParams(window.location.search)
+    const isSuccess = params.get('success')
 
     if (isSuccess) {
       setMessage('로그인 성공! 잠시간 기다려주세요..')
@@ -27,7 +27,7 @@ const AuthCallbackPage = () => {
         router.push('/auth/login')
       }, 2000)
     }
-  }, [searchParams, router])
+  }, [router])
 
   return (
     <section className="h-screen flex-center">
