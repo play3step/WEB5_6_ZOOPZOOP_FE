@@ -8,9 +8,9 @@ interface Props {
 export const NewsGrid = async ({ news }: Props) => {
   return (
     <div className="flex flex-wrap gap-4">
-      {news.map(item => (
+      {news.map((item, index) => (
         <NewsCard
-          key={item.title}
+          key={item.link || `${item.title}-${index}`}
           title={item.title}
           content={item.description}
           createdAt={item.pubDate}
