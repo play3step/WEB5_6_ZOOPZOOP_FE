@@ -1,6 +1,7 @@
 import { fetchNewsByKeywords } from '@/entities/news'
 
 import { NewsGrid } from '@/widgets/news-section'
+import { notFound } from 'next/navigation'
 
 export async function generateMetadata({
   params
@@ -25,9 +26,11 @@ export default async function NewsCategory({
   params: Promise<{ category: string }>
 }) {
   const { category } = await params
-  const news = await fetchNewsByKeywords(
-    categoryList[category as keyof typeof categoryList]
-  )
+  const keywords = categoryList[category as keyof typeof categoryList]
+  if (!keywords) {
+    return notFound()
+  }
+  const news = await fetchNewsByKeywords(keywords)
 
   return (
     <div className="w-full flex flex-col p-10 min-h-[calc(100vh-72px)]">
