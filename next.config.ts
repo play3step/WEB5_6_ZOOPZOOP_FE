@@ -4,6 +4,9 @@ const nextConfig: NextConfig = {
   /* config options here */
   turbopack: {
     root: __dirname
+  },
+  images: {
+    domains: ['k.kakaocdn.net']
   }
 }
 

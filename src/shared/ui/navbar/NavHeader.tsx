@@ -1,10 +1,8 @@
+import { User } from '@/entities/user/model/type'
 import Image from 'next/image'
 
 interface Props {
-  user: {
-    username: string
-    userProfile: string
-  }
+  user: User | null
 }
 
 export default function NavHeader({ user }: Props) {
@@ -23,7 +21,7 @@ export default function NavHeader({ user }: Props) {
       <div className="flex items-center gap-2 px-1 py-1 lg:rounded-md lg:bg-green-light lg:px-3 lg:py-2 ">
         <div className="w-7 h-7 overflow-hidden rounded-full border-1">
           <Image
-            src={user.userProfile}
+            src={user ? user.profileUrl : '/zoopzoop.png'}
             alt="user image"
             width={30}
             height={30}
@@ -31,7 +29,7 @@ export default function NavHeader({ user }: Props) {
           />
         </div>
         <p className="text-base hidden lg:block">
-          안녕하세요. {user.username}님
+          {user ? user.name : '사용자'}
         </p>
       </div>
     </header>

@@ -4,8 +4,11 @@ import { navItems } from '@/shared/lib'
 import NavHeader from './NavHeader'
 import NavItems from './NavItems'
 import { useState } from 'react'
+import { useUserStore } from '@/entities/user/model/store'
 
 function Navbar() {
+  const user = useUserStore(state => state.user)
+
   const [menuState, setMenuState] = useState<{
     main: string | null
     sub: string | null
@@ -27,12 +30,7 @@ function Navbar() {
     <nav
       aria-label="Primary navigation"
       className="flex flex-col py-4 px-2 cursor-pointer border-r-1 h-screen">
-      <NavHeader
-        user={{
-          username: '사용자',
-          userProfile: '/zoopzoop.png'
-        }}
-      />
+      <NavHeader user={user} />
       <ul>
         {navItems.map(item => (
           <NavItems

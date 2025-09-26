@@ -1,5 +1,5 @@
 export interface APIResponse<T> {
-  state: string
+  status: string
   msg: string
   data: T
 }
