@@ -1,3 +1,4 @@
+import { fetchNewsByKeywords } from '@/entities/news'
 import { SearchSection } from '@/features/news-search'
 import { MajorNews } from '@/widgets/news-major'
 import { NewsCategory } from '@/widgets/news-section'
@@ -9,6 +10,18 @@ export const metadata: Metadata = {
 }
 
 export default async function News() {
+  const categories = [
+    { keywords: 'politics', categoryKor: '정치' },
+    { keywords: 'economy', categoryKor: '경제' },
+    { keywords: 'society', categoryKor: '사회' },
+    { keywords: 'it', categoryKor: 'IT' },
+    { keywords: 'sports', categoryKor: '스포츠' }
+  ]
+
+  const categoryResults = await Promise.allSettled(
+    categories.map(category => fetchNewsByKeywords(category.categoryKor))
+  )
+
   return (
     <div className="w-full flex flex-col p-6 lg:p-10 min-h-[calc(100vh-72px)]">
       <div className="flex-1 flex flex-col gap-8">
@@ -20,26 +33,21 @@ export default async function News() {
         </div>
 
         <div className="flex flex-col gap-10">
-          <NewsCategory
-            category="politics"
-            categoryKor="정치"
-          />
-          <NewsCategory
-            category="economy"
-            categoryKor="경제"
-          />
-          <NewsCategory
-            category="society"
-            categoryKor="사회"
-          />
-          <NewsCategory
-            category="it"
-            categoryKor="IT"
-          />
-          <NewsCategory
-            category="sports"
-            categoryKor="스포츠"
-          />
+          {categories.map((category, index) => {
+            const news =
+              categoryResults[index].status === 'fulfilled'
+                ? categoryResults[index].value?.data?.items
+                : []
+
+            return (
+              <NewsCategory
+                key={category.keywords}
+                category={category.keywords}
+                categoryKor={category.categoryKor}
+                news={news?.slice(0, 4)}
+              />
+            )
+          })}
         </div>
       </div>
     </div>

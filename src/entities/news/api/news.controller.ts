@@ -10,7 +10,13 @@ export const fetchNews = async (): Promise<NewsResponse> => {
 export const fetchNewsByKeywords = async (
   keywords: string
 ): Promise<NewsResponse> => {
-  return httpClient.post<NewsResponse>(`/api/v1/news/keywords`, {
-    keywords: [keywords]
-  })
+  return httpClient.post<NewsResponse>(
+    `/api/v1/news/keywords`,
+    {
+      keywords: [keywords]
+    },
+    {
+      next: { revalidate: 300, tags: [`news-${keywords}`] }
+    }
+  )
 }

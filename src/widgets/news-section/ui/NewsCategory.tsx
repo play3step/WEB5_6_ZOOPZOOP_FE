@@ -1,16 +1,14 @@
-import { fetchNewsByKeywords } from '@/entities/news'
+import { News } from '@/entities/news'
 import { SubNewsCard } from '@/shared/ui/card'
 import Link from 'next/link'
 
 interface Props {
   category: string
-  categoryKor: string // 한글 카테고리명 추가
+  news: News[]
+  categoryKor: string
 }
 
-export const NewsCategory = async ({ category, categoryKor }: Props) => {
-  const news = await fetchNewsByKeywords(categoryKor)
-  const limitedNews = news?.data?.items?.slice(0, 4) ?? []
-
+export const NewsCategory = async ({ category, news, categoryKor }: Props) => {
   return (
     <div className="flex flex-col gap-4">
       <div className="flex justify-between items-center">
@@ -22,9 +20,9 @@ export const NewsCategory = async ({ category, categoryKor }: Props) => {
         </Link>
       </div>
 
-      {limitedNews.length > 0 ? (
+      {news.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {limitedNews.map((item, index) => (
+          {news.map((item, index) => (
             <SubNewsCard
               key={item.link || `${item.title}-${index}`}
               title={item.title}
