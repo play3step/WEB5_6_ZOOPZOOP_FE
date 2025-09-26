@@ -22,9 +22,9 @@ export const NewsCard = ({
   createdAt
 }: Props) => {
   return (
-    <div className="w-[320px] h-[371px] rounded-lg shadow-md bg-white ">
+    <div className="w-[320px] h-[371px] rounded-lg shadow-md bg-white hover:shadow-lg transition-shadow">
       <div
-        className={`w-full h-[200px] ${link ? 'cursor-pointer' : 'cursor-default'}`}
+        className={`w-full h-[200px] rounded-t-lg overflow-hidden ${link ? 'cursor-pointer' : 'cursor-default'}`}
         onClick={() => {
           if (!link) return
           window.open(link, '_blank', 'noopener,noreferrer')
@@ -35,7 +35,7 @@ export const NewsCard = ({
             alt="news"
             width={360}
             height={200}
-            className="object-cover aspect-video"
+            className="object-cover w-full h-full hover:scale-105 transition-transform duration-300"
             onError={e => {
               e.currentTarget.style.display = 'none'
             }}
@@ -56,7 +56,9 @@ export const NewsCard = ({
           </p>
         </div>
         <div className="flex flex-col gap-1">
-          <h3 className="text-lg font-bold line-clamp-1">{title}</h3>
+          <h3 className="text-lg font-bold line-clamp-1 leading-tight cursor-pointer hover:text-green-normal transition-colors">
+            {title}
+          </h3>
           <p className="text-sm text-gray-500 line-clamp-3">{content}</p>
         </div>
       </div>

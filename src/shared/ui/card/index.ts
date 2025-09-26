@@ -1,5 +1,5 @@
 export { FileCard } from './FileCard'
 export { SpaceCard } from './SpaceCard'
-export { NewsCard } from './newsCard/newsCard'
+export { NewsCard } from './newsCard/NewsCard'
 export { MainNewsCard } from './newsCard/MainNewsCard'
 export { SubNewsCard } from './newsCard/SubNewsCard'

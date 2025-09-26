@@ -1,5 +1,5 @@
 import { StoryObj } from '@storybook/nextjs-vite'
-import { NewsCard } from './newsCard'
+import { NewsCard } from './NewsCard'
 
 const meta = {
   title: 'Components/NewsCard',
