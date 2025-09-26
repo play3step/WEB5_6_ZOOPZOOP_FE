@@ -1,12 +1,6 @@
-const API_BASE_URL = process.env.API_URL || ''
+import { NextFetchOptions } from '../types'
 
-interface NextFetchOptions extends RequestInit {
-  next?: {
-    revalidate?: number | false
-    tags?: string[]
-  }
-  cache?: 'force-cache' | 'no-store'
-}
+const API_BASE_URL = process.env.API_URL || ''
 
 const createFetchOptions = (
   method: string,
