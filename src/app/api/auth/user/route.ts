@@ -1,6 +1,7 @@
-import { fetchUser } from '@/entities/user/api/user.controller'
 import { cookies } from 'next/headers'
+
 import { NextResponse } from 'next/server'
+import { fetchUser } from '@/entities/user'
 
 export async function GET() {
   const cookieStore = cookies()

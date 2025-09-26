@@ -5,7 +5,6 @@ import { User } from './type'
 interface UserStore {
   // store
   user: User | null
-  isLoading: boolean
   isAuthenticated: boolean
   // action
   setUser: (user: User) => void
@@ -16,11 +15,9 @@ export const useUserStore = create<UserStore>()(
   persist(
     set => ({
       user: null,
-      isLoading: false,
       isAuthenticated: false,
-      setUser: user => set({ user, isLoading: false, isAuthenticated: true }),
-      clearUser: () =>
-        set({ user: null, isAuthenticated: false, isLoading: false })
+      setUser: user => set({ user, isAuthenticated: true }),
+      clearUser: () => set({ user: null, isAuthenticated: false })
     }),
     {
       name: 'user-storage',

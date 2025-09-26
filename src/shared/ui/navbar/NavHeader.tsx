@@ -1,4 +1,4 @@
-import { User } from '@/entities/user/model/type'
+import { User } from '@/entities/user'
 import Image from 'next/image'
 
 interface Props {
