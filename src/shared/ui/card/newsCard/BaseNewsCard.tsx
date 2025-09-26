@@ -13,7 +13,7 @@ interface Props {
   createdAt: string
 }
 
-export const NewsCard = ({
+export const BaseNewsCard = ({
   title,
   content,
   imageUrl,

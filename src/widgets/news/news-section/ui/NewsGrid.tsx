@@ -1,5 +1,5 @@
 import { News } from '@/entities/news'
-import { NewsCard } from '@/shared/ui/card'
+import { BaseNewsCard } from '@/shared/ui/card'
 
 interface Props {
   news: News[]
@@ -10,7 +10,7 @@ export const NewsGrid = ({ news }: Props) => {
   return (
     <div className="flex flex-wrap gap-4">
       {limitedNews.map((item, index) => (
-        <NewsCard
+        <BaseNewsCard
           key={item.link || `${item.title}-${index}`}
           title={item.title}
           content={item.description}
