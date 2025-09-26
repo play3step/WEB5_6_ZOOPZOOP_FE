@@ -9,9 +9,12 @@ import { validateKeyword } from '../lib/validation'
 import { KeywordList } from './KeywordList'
 import { SearchButton } from './SearchButton'
 import { SearchInputKeyword } from './SearchInputKeyword'
+import { useRouter } from 'next/navigation'
 
 export const SearchSection = () => {
   const [keyword, setKeyword] = useState('')
+  const router = useRouter()
+
   const { searchKeywords, addSearchKeyword, removeSearchKeyword } =
     useSearchKeywords()
 
@@ -31,6 +34,7 @@ export const SearchSection = () => {
       alert('최소 1개의 키워드를 입력해주세요.')
       return
     }
+    router.push(`/news/search?keywords=${searchKeywords.join(',')}`)
   }
 
   return (

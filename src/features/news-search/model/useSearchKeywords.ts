@@ -13,5 +13,9 @@ export const useSearchKeywords = () => {
     setSearchKeywords(searchKeywords.filter(k => k !== keyword))
   }
 
-  return { searchKeywords, addSearchKeyword, removeSearchKeyword }
+  return {
+    searchKeywords,
+    addSearchKeyword,
+    removeSearchKeyword
+  }
 }
