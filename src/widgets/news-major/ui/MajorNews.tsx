@@ -1,6 +1,5 @@
 import { fetchNews } from '@/entities/news'
-import { MainNewsCard } from '@/shared/ui/card/newsCard/MainNewsCard'
-import { SubNewsCard } from '@/shared/ui/card/newsCard/SubNewsCard'
+import { MainNewsCard, SubNewsCard } from '@/shared/ui/card'
 
 export const MajorNews = async () => {
   const news = await fetchNews()
