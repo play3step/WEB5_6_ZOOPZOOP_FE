@@ -26,7 +26,8 @@ export const MainNewsCard = ({
       <div
         className="w-full h-[280px] cursor-pointer rounded-t-lg overflow-hidden"
         onClick={() => {
-          window.open(link, '_blank')
+          if (!link) return
+          window.open(link, '_blank', 'noopener,noreferrer')
         }}>
         {imageUrl ? (
           <Image
@@ -50,14 +51,18 @@ export const MainNewsCard = ({
         <div className="flex items-center justify-between">
           <Badge name={category || ''} />
           <p className="text-sm text-gray-normal">
-            {dayjs(createdAt).format('YYYY.MM.DD. HH:mm') ||
-              '2025.01.01. 00:00'}
+            {dayjs(createdAt).isValid()
+              ? dayjs(createdAt).format('YYYY.MM.DD. HH:mm')
+              : '발행일 정보 없음'}
           </p>
         </div>
         <div className="flex flex-col gap-2">
           <h3
             className="text-xl font-bold line-clamp-2 leading-tight cursor-pointer hover:text-green-normal transition-colors"
-            onClick={() => window.open(link, '_blank')}>
+            onClick={() => {
+              if (!link) return
+              window.open(link, '_blank', 'noopener,noreferrer')
+            }}>
             {title}
           </h3>
           <p className="text-sm text-gray-600 line-clamp-3 leading-relaxed">

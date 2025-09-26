@@ -2,7 +2,9 @@ export const validateKeyword = (
   keyword: string,
   existingKeywords: string[]
 ) => {
-  if (keyword.trim() === '') {
+  const normalizedKeyword = keyword.trim()
+
+  if (normalizedKeyword === '') {
     return { isValid: false, message: '검색 키워드를 입력해주세요.' }
   }
 
@@ -13,7 +15,7 @@ export const validateKeyword = (
     }
   }
 
-  if (existingKeywords.includes(keyword)) {
+  if (existingKeywords.includes(normalizedKeyword)) {
     return { isValid: false, message: '이미 검색된 키워드입니다.' }
   }
 

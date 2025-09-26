@@ -4,9 +4,13 @@ import { SubNewsCard } from '@/shared/ui/card/newsCard/SubNewsCard'
 
 export const MajorNews = async () => {
   const news = await fetchNews()
-  const limitedNews = news.data.items.slice(0, 4)
-  const mainNews = limitedNews[0]
-  const subNews = limitedNews.slice(1)
+  const limitedNews = news?.data?.items?.slice(0, 4) ?? []
+
+  if (limitedNews.length === 0) {
+    return null
+  }
+
+  const [mainNews, ...subNews] = limitedNews
 
   return (
     <div className="flex flex-col gap-6">

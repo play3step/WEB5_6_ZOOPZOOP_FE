@@ -6,11 +6,11 @@ export const useSearchKeywords = () => {
   const [searchKeywords, setSearchKeywords] = useState<string[]>([])
 
   const addSearchKeyword = (keyword: string) => {
-    setSearchKeywords([...searchKeywords, keyword])
+    setSearchKeywords(prev => [...prev, keyword])
   }
 
   const removeSearchKeyword = (keyword: string) => {
-    setSearchKeywords(searchKeywords.filter(k => k !== keyword))
+    setSearchKeywords(prev => prev.filter(k => k !== keyword))
   }
 
   return {

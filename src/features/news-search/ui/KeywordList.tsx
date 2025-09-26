@@ -16,6 +16,8 @@ export const KeywordList = ({ keywords, onRemove }: KeywordListProps) => {
             className="flex items-center gap-1 px-3 py-2 bg-gradient-to-r from-green-light to-green-light-hover border border-green-light-active rounded-lg group">
             <span className="text-sm text-green-dark">{keyword}</span>
             <button
+              type="button"
+              aria-label={`Remove keyword ${keyword}`}
               onClick={() => onRemove(keyword)}
               className="p-1 text-green-normal hover:text-green-dark rounded-full hover:bg-green-light-active transition-colors">
               <svg

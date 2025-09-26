@@ -24,9 +24,10 @@ export const NewsCard = ({
   return (
     <div className="w-[320px] h-[371px] rounded-lg shadow-md bg-white ">
       <div
-        className="w-full h-[200px] cursor-pointer"
+        className={`w-full h-[200px] ${link ? 'cursor-pointer' : 'cursor-default'}`}
         onClick={() => {
-          window.open(link, '_blank')
+          if (!link) return
+          window.open(link, '_blank', 'noopener,noreferrer')
         }}>
         {imageUrl ? (
           <Image
