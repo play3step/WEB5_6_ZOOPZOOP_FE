@@ -1,5 +1,5 @@
-import { SearchInput } from '@/features/news-search'
-import { CategoryFilter } from '@/features/news-filter'
+import { SearchInput } from '@/features/news/news-search'
+import { CategoryFilter } from '@/features/news/news-filter'
 
 export const NewsHeader = () => {
   return (
