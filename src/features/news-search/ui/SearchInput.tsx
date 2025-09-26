@@ -27,7 +27,7 @@ export const SearchInput = () => {
       params.delete('search')
     }
 
-    router.push(`/news?${params.toString()}`)
+    router.push(`/news/search?${params.toString()}`)
   }
 
   return (
