@@ -1,4 +1,4 @@
-import { NewsHeader } from '@/widgets/news-header'
+import { NewsHeader } from '@/widgets/news/news-header'
 import { Suspense } from 'react'
 
 export default function NewsLayout({

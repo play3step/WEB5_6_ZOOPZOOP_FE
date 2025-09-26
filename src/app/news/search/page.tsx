@@ -1,5 +1,5 @@
 import { fetchNewsByKeywords } from '@/entities/news'
-import { NewsGrid } from '@/widgets/news-section'
+import { NewsGrid } from '@/widgets/news/news-section'
 
 export default async function NewsSearch({
   searchParams

@@ -1,7 +1,7 @@
 import { fetchNewsByKeywords } from '@/entities/news'
 import { SearchSection } from '@/features/news/news-search'
-import { MajorNews } from '@/widgets/news-major'
-import { NewsCategory } from '@/widgets/news-section'
+import { MajorNews } from '@/widgets/news/news-major'
+import { NewsCategory } from '@/widgets/news/news-section'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {

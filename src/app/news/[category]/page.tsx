@@ -1,6 +1,6 @@
 import { fetchNewsByKeywords } from '@/entities/news'
 
-import { NewsGrid } from '@/widgets/news-section'
+import { NewsGrid } from '@/widgets/news/news-section'
 import { notFound } from 'next/navigation'
 
 export async function generateMetadata({
