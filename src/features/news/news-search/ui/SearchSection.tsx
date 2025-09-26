@@ -44,9 +44,9 @@ export const SearchSection = () => {
           <div className="w-8 h-8 bg-gradient-to-br from-green-light to-green-light-hover rounded-lg flex items-center justify-center shadow-sm">
             <FiSearch className="text-green-normal text-lg" />
           </div>
-          <h2 className="text-sm font-semibold text-gray-800">
+          <h2 className="text-lg font-semibold text-gray-800">
             키워드 검색{' '}
-            <span className="text-xs text-gray-normal">(최대 4개)</span>
+            <span className="text-base text-gray-normal">(최대 4개)</span>
           </h2>
         </div>
 

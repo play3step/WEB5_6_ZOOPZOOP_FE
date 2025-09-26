@@ -20,7 +20,7 @@ export const SearchInputKeyword = ({
   }
 
   return (
-    <div className="flex gap-2 flex-1">
+    <div className="flex gap-2 flex-1 items-center">
       <input
         type="text"
         placeholder={placeholder}
@@ -31,7 +31,7 @@ export const SearchInputKeyword = ({
       />
       <Button
         onClick={onAdd}
-        className="px-4 py-3 bg-green-normal hover:bg-green-normal-hover text-white transition-all shadow-sm whitespace-nowrap">
+        className="px-4 py-5 text-base bg-green-normal hover:bg-green-normal-hover text-white transition-all shadow-sm whitespace-nowrap">
         추가
       </Button>
     </div>

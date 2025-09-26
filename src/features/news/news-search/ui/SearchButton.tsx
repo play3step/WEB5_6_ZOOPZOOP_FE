@@ -15,7 +15,7 @@ export const SearchButton = ({
     <Button
       onClick={onClick}
       disabled={disabled}
-      className="w-full py-3 text-sm bg-green-normal hover:bg-green-normal-hover text-white transition-all shadow-sm font-medium disabled:opacity-50 disabled:cursor-not-allowed">
+      className="w-full py-6 text-base bg-green-normal hover:bg-green-normal-hover text-white transition-all shadow-sm font-medium disabled:opacity-50 disabled:cursor-not-allowed">
       {children}
     </Button>
   )

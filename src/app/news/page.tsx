@@ -23,11 +23,11 @@ export default async function News() {
   )
 
   return (
-    <div className="w-full flex flex-col p-6 lg:p-10 min-h-[calc(100vh-72px)]">
+    <div className="w-full flex flex-col p-10 min-h-[calc(100vh-72px)]">
       <div className="flex-1 flex flex-col gap-8">
         <MajorNews />
 
-        <div className="bg-gray-50 rounded-xl p-6">
+        <div className="">
           <h2 className="text-2xl font-bold mb-6 text-gray-800">뉴스 키워드</h2>
           <SearchSection />
         </div>
