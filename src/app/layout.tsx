@@ -3,6 +3,7 @@ import './globals.css'
 import { QueryProvider } from '@/shared/providers'
 import Navbar from '@/shared/ui/navbar/Navbar'
 import { GlobalModal } from '@/shared/ui/modal'
+import AuthProvider from '@/shared/providers/auth-provider'
 
 export const metadata: Metadata = {
   title: 'ZoopZoop',
@@ -23,8 +24,10 @@ export default function RootLayout({
         <Navbar />
         <main className="flex-1">
           <QueryProvider>
-            {children}
-            <GlobalModal />
+            <AuthProvider>
+              {children}
+              <GlobalModal />
+            </AuthProvider>
           </QueryProvider>
         </main>
       </body>
