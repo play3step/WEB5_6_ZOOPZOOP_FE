@@ -4,8 +4,7 @@ import { NextResponse } from 'next/server'
 import { fetchUser } from '@/entities/user'
 
 export async function GET() {
-  const cookieStore = cookies()
-  const accessToken = (await cookieStore).get('accessToken')?.value
+  const accessToken = (await cookies()).get('accessToken')?.value
 
   const { status, data, msg } = await fetchUser({
     headers: {

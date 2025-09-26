@@ -1,6 +1,7 @@
 'use client'
 
 import { useUserQuery, useUserStore } from '@/entities/user'
+import { useEffect } from 'react'
 
 interface Props {
   children: React.ReactNode
@@ -12,8 +13,9 @@ const AuthProvider = ({ children }: Props) => {
   const setUser = useUserStore(state => state.setUser)
   const { data, isPending } = useUserQuery({ enabled: !user })
 
-  // fetch가 끝나고 user 상태 업데이트
-  if (data && !user) setUser(data)
+  useEffect(() => {
+    if (data && !user) setUser(data)
+  }, [data, user, setUser])
 
   if (isPending) {
     return (

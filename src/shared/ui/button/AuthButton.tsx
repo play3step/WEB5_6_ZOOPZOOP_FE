@@ -1,3 +1,5 @@
+'use client'
+
 import { tw } from '@/shared/lib'
 
 interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
