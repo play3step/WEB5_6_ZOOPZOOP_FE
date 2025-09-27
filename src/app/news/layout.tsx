@@ -1,4 +1,4 @@
-import { NewsHeader } from '@/widgets/news-header'
+import { NewsHeader } from '@/widgets/news/news-header'
 import { Suspense } from 'react'
 
 export default function NewsLayout({
@@ -11,7 +11,7 @@ export default function NewsLayout({
       <Suspense fallback={<div>Loading...</div>}>
         <NewsHeader />
       </Suspense>
-      <div className="w-[1440px] mx-auto">{children}</div>
+      <div className="w-[1200px] mx-auto">{children}</div>
     </div>
   )
 }

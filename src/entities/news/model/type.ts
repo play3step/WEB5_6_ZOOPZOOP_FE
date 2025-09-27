@@ -1,6 +1,6 @@
 export interface NewsResponse {
-  status: 'string'
-  msg: 'string'
+  status: string
+  msg: string
   data: {
     total: number
     items: News[]

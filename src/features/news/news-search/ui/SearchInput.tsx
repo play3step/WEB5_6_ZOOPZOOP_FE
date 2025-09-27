@@ -11,7 +11,7 @@ export const SearchInput = () => {
   const searchParams = useSearchParams()
 
   useEffect(() => {
-    const query = searchParams.get('search') || ''
+    const query = searchParams.get('keywords') || ''
     setSearch(query)
   }, [searchParams])
 
@@ -22,12 +22,12 @@ export const SearchInput = () => {
   const handleEnter = () => {
     const params = new URLSearchParams(searchParams)
     if (search.trim()) {
-      params.set('search', search.trim())
+      params.set('keywords', search.trim())
     } else {
-      params.delete('search')
+      params.delete('keywords')
     }
 
-    router.push(`/news?${params.toString()}`)
+    router.push(`/news/search?${params.toString()}`)
   }
 
   return (
