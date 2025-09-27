@@ -4,7 +4,7 @@ import Image from 'next/image'
 import { AuthButton } from '@/shared/ui/button'
 import KakaoLogo from '../assets/kakaoLogo.svg'
 import { redirectToOAuth } from '../model/action'
-import { SocialProvider } from '../model/enum'
+import { SocialProvider } from '../model/type'
 
 const KakaoAuthButton = () => {
   const handleOAuthLogin = async () => {
