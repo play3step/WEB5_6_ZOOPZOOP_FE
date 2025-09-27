@@ -29,7 +29,7 @@ function Header({ title, buttons, searchBar }: Props) {
       searchBar.onSearch(query)
     }
     setQuery('')
-  }, [searchBar.onSearch, query])
+  }, [searchBar, query])
 
   const searchHeader = useCallback(() => {
     return (

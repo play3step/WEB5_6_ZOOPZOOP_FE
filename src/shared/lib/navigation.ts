@@ -80,6 +80,7 @@ export const navItems: MainNav[] = [
   },
   { href: '/news', label: '뉴스', icon: ScrollText },
 
+  { href: '/profile', label: '계정 관리', icon: Settings }
   /* TODO: 루트 변경 */
-  { href: '/news', label: '계정 관리', icon: Settings }
+  // { href: '/profile', label: '계정 관리', icon: Settings }
 ]
