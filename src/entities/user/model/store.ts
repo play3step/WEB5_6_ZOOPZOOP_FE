@@ -8,6 +8,7 @@ interface UserStore {
   isAuthenticated: boolean
   // action
   setUser: (user: User) => void
+  updateUser: (updates: Partial<User>) => void
   clearUser: () => void
 }
 
@@ -17,6 +18,10 @@ export const useUserStore = create<UserStore>()(
       user: null,
       isAuthenticated: false,
       setUser: user => set({ user, isAuthenticated: true }),
+      updateUser: updates =>
+        set(state => ({
+          user: state.user ? { ...state.user, ...updates } : null
+        })),
       clearUser: () => set({ user: null, isAuthenticated: false })
     }),
     {

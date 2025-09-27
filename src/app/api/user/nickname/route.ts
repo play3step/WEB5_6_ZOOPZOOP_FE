@@ -1,5 +1,5 @@
 import { updateUserNickname } from '@/entities/user'
-import { createCookieHeader, getAccessToken } from '@/shared/lib'
+import { createCookieHeader, getAccessToken } from '@/shared/lib/api-route'
 import { NextResponse } from 'next/server'
 
 export async function PUT(request: Request) {

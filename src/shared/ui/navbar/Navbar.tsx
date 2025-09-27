@@ -1,10 +1,10 @@
 'use client'
 import { useState } from 'react'
 
-import { navItems } from '@/shared/lib'
 import { useUserStore } from '@/entities/user'
 import NavHeader from './NavHeader'
 import NavItems from './NavItems'
+import { navItems } from '@/shared/constants'
 
 function Navbar() {
   const user = useUserStore(state => state.user)

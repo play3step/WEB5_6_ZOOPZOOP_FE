@@ -1,5 +1,9 @@
-export { useUserQuery } from './api/useUserQuery'
-export { fetchUser } from './api/user.controller'
+export { fetchUser, updateUserNickname, logout } from './api/user.controller'
 export { getUser } from './api/user.service'
-export { useUserStore } from './model/store'
-export { type User, type UserResponse } from './model/type'
+export { useUserStore, useUserQuery } from './model'
+export type {
+  User,
+  Nickname,
+  UserResponse,
+  UpdateNicknameResponse
+} from './model'

@@ -1,1 +1,1 @@
-export { type APIResponse, type NextFetchOptions } from './api'
+export type { APIResponse, NextFetchOptions } from './api'
