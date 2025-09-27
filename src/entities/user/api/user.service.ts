@@ -24,12 +24,15 @@ export const getUser = async (): Promise<User> => {
  * 사용자 닉네임 업데이트
  */
 export const updateNickname = async (payload: string): Promise<Nickname> => {
-  const response = await httpClient.put<UpdateNicknameResponse>('/api/user', {
-    newName: payload
-  })
+  const response = await httpClient.put<UpdateNicknameResponse>(
+    '/api/user/nickname',
+    {
+      newName: payload
+    }
+  )
   const { data: updatedNickname, status } = response
 
-  if (status !== '200' || !updateNickname) {
+  if (status !== '200' || !updatedNickname) {
     throw new Error('닉네임 업데이트 실패')
   }
 
@@ -39,8 +42,8 @@ export const updateNickname = async (payload: string): Promise<Nickname> => {
 /**
  * 로그아웃
  */
-export const logout = async (): Promise<void> => {
-  const response = await httpClient.post<APIResponse<null>>('/api/user')
+export const deleteCookie = async (): Promise<void> => {
+  const response = await httpClient.get<APIResponse<null>>('/api/auth')
 
   const { status } = response
 

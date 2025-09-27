@@ -14,7 +14,7 @@ interface UserStore {
 
 export const useUserStore = create<UserStore>()(
   persist(
-    set => ({
+    (set, _, api) => ({
       user: null,
       isAuthenticated: false,
       setUser: user => set({ user, isAuthenticated: true }),
@@ -22,7 +22,10 @@ export const useUserStore = create<UserStore>()(
         set(state => ({
           user: state.user ? { ...state.user, ...updates } : null
         })),
-      clearUser: () => set({ user: null, isAuthenticated: false })
+      clearUser: () => {
+        set({ user: null, isAuthenticated: false })
+        api.persist.clearStorage()
+      }
     }),
     {
       name: 'user-storage',

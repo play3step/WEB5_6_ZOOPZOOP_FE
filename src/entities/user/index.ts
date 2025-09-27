@@ -1,5 +1,9 @@
-export { fetchUser, updateUserNickname, logout } from './api/user.controller'
-export { getUser } from './api/user.service'
+export {
+  fetchUser,
+  updateUserNickname,
+  deleteCookieApi
+} from './api/user.controller'
+export { getUser, deleteCookie, updateNickname } from './api/user.service'
 export { useUserStore, useUserQuery } from './model'
 export type {
   User,

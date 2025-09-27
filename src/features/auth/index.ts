@@ -1,1 +1,1 @@
-export { GoogleAuthButton, KakaoAuthButton } from './ui'
+export { GoogleAuthButton, KakaoAuthButton, LogoutButton } from './ui'

@@ -8,9 +8,6 @@ export async function PUT(request: Request) {
 
   if (!token) throw Error('토큰 없음')
 
-  // eslint-disable-next-line no-console
-  console.log('payload', payload)
-
   const { status, data, msg } = await updateUserNickname(payload, {
     headers: createCookieHeader(token)
   })

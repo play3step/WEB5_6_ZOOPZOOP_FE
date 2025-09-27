@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server'
 
 import { fetchUser } from '@/entities/user'
-import { createCookieHeader, getAccessToken } from '@/shared/lib'
+import { createCookieHeader, getAccessToken } from '@/shared/lib/api-route'
 
 // 사용자 정보 조회
 export async function GET() {
