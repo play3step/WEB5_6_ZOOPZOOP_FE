@@ -15,3 +15,6 @@ export interface Nickname {
 
 // 사용자 닉네임 변경
 export type UpdateNicknameResponse = APIResponse<Nickname>
+
+//로그아웃
+export type LogoutResponse = APIResponse<null>
