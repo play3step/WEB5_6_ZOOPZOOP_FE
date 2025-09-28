@@ -7,7 +7,14 @@ import { createCookieHeader, getAccessToken } from '@/shared/lib/api-route'
 export async function GET() {
   const token = await getAccessToken()
 
-  if (!token) throw Error('토큰 없음')
+  // TODO: 지금은 일단 에러 던져서 표시 x
+  if (!token) {
+    return NextResponse.json({
+      status: 401,
+      data: null,
+      msg: '인증 토큰이 없습니다'
+    })
+  }
 
   const { status, data, msg } = await fetchUser({
     headers: createCookieHeader(token)

@@ -1,10 +1,6 @@
 import { httpClient } from '@/shared/lib'
-import {
-  LogoutResponse,
-  UpdateNicknameResponse,
-  UserResponse
-} from '../model/type'
 import { NextFetchOptions } from '@/shared/types'
+import { UpdateNicknameResponse, UserResponse } from '../model/type'
 
 // 사용자 데이터
 export const fetchUser = async (
@@ -23,11 +19,4 @@ export const updateUserNickname = async (
     payload,
     options
   )
-}
-
-// 로그아웃
-export const deleteCookieApi = async (
-  options: NextFetchOptions
-): Promise<LogoutResponse> => {
-  return httpClient.get('/api/v1/auth/logout', options)
 }

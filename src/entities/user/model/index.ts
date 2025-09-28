@@ -1,3 +1,3 @@
 export { useUserStore } from './store'
 export type * from './type'
-export { useUserQuery } from './useUserQuery'
+export { useUserQuery } from './hooks/useUserQuery'

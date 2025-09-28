@@ -1,7 +1,7 @@
 'use client'
 
 import { ModalLayout } from '@/shared/ui'
-import { useDeleteAccount } from '../model/useDeleteAccount'
+import { useDeleteAccount } from '../model/hooks/useDeleteAccount'
 
 export const DeleteAccountModal = () => {
   const {

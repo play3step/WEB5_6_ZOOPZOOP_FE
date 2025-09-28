@@ -1,11 +1,10 @@
 import { httpClient } from '@/shared/lib'
 import {
-  User,
   Nickname,
-  UserResponse,
-  UpdateNicknameResponse
+  UpdateNicknameResponse,
+  User,
+  UserResponse
 } from '../model/type'
-import { APIResponse } from '@/shared/types'
 
 /**
  * 사용자 정보 fetch
@@ -37,17 +36,4 @@ export const updateNickname = async (payload: string): Promise<Nickname> => {
   }
 
   return updatedNickname
-}
-
-/**
- * 로그아웃
- */
-export const deleteCookie = async (): Promise<void> => {
-  const response = await httpClient.get<APIResponse<null>>('/api/auth')
-
-  const { status } = response
-
-  if (status !== '200') {
-    throw new Error('로그아웃 실패')
-  }
 }

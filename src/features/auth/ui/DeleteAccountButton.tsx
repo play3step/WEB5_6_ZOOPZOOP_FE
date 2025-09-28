@@ -3,7 +3,7 @@
 import { useModalStore } from '@/shared/lib'
 import { UserX } from 'lucide-react'
 
-const DeleteAccountSection = () => {
+const DeleteAccountButton = () => {
   const openModal = useModalStore(state => state.openModal)
 
   const handleOpenModal = () => {
@@ -20,4 +20,4 @@ const DeleteAccountSection = () => {
     </button>
   )
 }
-export default DeleteAccountSection
+export default DeleteAccountButton

@@ -1,7 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
-
-import { User } from '../model/type'
-import { getUser } from '../api/user.service'
+import { User } from '../type'
+import { getUser } from '../../api/clientApi'
 
 interface UserQuery {
   enabled?: boolean
