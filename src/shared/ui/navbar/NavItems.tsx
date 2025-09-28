@@ -1,4 +1,4 @@
-import { MainNav } from '@/shared/lib/navigation'
+import { MainNav } from '@/shared/constants/navigation'
 import MainNavItem from './MainNavItem'
 import SubNavItem from './SubNavItem'
 
