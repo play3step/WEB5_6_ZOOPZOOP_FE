@@ -1,7 +1,7 @@
 'use client'
 
+import { NavItem } from '@/shared/constants/navigation'
 import { tw } from '@/shared/lib'
-import { NavItem } from '@/shared/lib/navigation'
 import Link from 'next/link'
 
 interface Props {
