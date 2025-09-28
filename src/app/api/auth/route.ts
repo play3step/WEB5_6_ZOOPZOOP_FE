@@ -11,10 +11,13 @@ import { deleteAccountApi, logoutUserApi } from '@/shared/api'
 export async function GET() {
   const token = await getAccessToken()
 
-  // cookie 클리어
-  await clearToken()
-
-  if (!token) throw Error('토큰 없음')
+  if (!token) {
+    return NextResponse.json({
+      status: 401,
+      data: null,
+      msg: '인증 토큰이 없습니다'
+    })
+  }
 
   const { status, data, msg } = await logoutUserApi({
     headers: createCookieHeader(token)
@@ -27,6 +30,9 @@ export async function GET() {
       msg: 'api 통신 실패'
     })
   }
+
+  // cookie 클리어
+  await clearToken()
 
   return NextResponse.json({
     status,
