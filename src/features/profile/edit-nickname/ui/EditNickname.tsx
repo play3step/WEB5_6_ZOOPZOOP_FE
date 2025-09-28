@@ -1,6 +1,7 @@
 'use client'
 
-import { useRef } from 'react'
+import { useState } from 'react'
+import { Loader2 } from 'lucide-react'
 import useUpdateNickname from '../model/useEditNickname'
 
 interface Props {
@@ -8,14 +9,18 @@ interface Props {
 }
 
 const EditNickname = ({ nickname }: Props) => {
-  const nicknameRef = useRef<HTMLInputElement>(null)
+  const [newNickname, setNewNickname] = useState(nickname)
   const { mutate: updateNickname, isPending } = useUpdateNickname()
+  const isChanged = newNickname.trim() !== nickname
+  const isDisabled = isPending || !isChanged
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setNewNickname(e.target.value)
+  }
 
   const handleEditNickname = () => {
-    if (!nicknameRef.current) return
-    const nickname = nicknameRef.current.value.trim()
-
-    updateNickname(nickname)
+    if (!isChanged) return
+    updateNickname(newNickname)
   }
 
   return (
@@ -27,18 +32,32 @@ const EditNickname = ({ nickname }: Props) => {
       </label>
       <div className="flex gap-3">
         <input
-          ref={nicknameRef}
           className="flex-1 px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-orange-accent focus:border-orange-accent"
           id="nickname"
           placeholder="닉네임을 입력하세요"
-          defaultValue={nickname}
+          value={newNickname}
+          onChange={handleChange}
         />
         <button
-          className="px-4 py-2 border border-gray-300 text-gray-700 text-sm font-medium rounded-md hover:bg-gray-50 transition-colors duration-200 cursor-pointer"
+          className={`px-4 py-2 border text-sm font-medium rounded-md transition-colors duration-200 ${
+            isDisabled
+              ? 'border-gray-200 text-gray-400 cursor-not-allowed'
+              : 'border-gray-300 text-gray-700 hover:bg-gray-50 cursor-pointer'
+          }`}
           type="button"
           onClick={handleEditNickname}
-          disabled={isPending}>
-          변경
+          disabled={isDisabled}>
+          {isPending ? (
+            <div className="flex-center gap-2">
+              <Loader2
+                className="animate-spin"
+                size={16}
+              />
+              변경 중
+            </div>
+          ) : (
+            '변경'
+          )}
         </button>
       </div>
     </div>
