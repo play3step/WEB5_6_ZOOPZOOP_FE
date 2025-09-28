@@ -1,5 +1,5 @@
+import { MainNav } from '@/shared/constants/navigation'
 import { tw } from '@/shared/lib'
-import { MainNav } from '@/shared/lib/navigation'
 import Link from 'next/link'
 
 interface Props {

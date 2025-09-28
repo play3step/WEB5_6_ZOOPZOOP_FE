@@ -11,7 +11,7 @@ import {
   LucideIcon
 } from 'lucide-react'
 
-type MainNav = {
+export type MainNav = {
   href: string
   label: string
   icon: LucideIcon
@@ -19,7 +19,7 @@ type MainNav = {
   children?: NavItem[]
 }
 
-type NavItem = {
+export type NavItem = {
   href: string
   label: string
   icon: LucideIcon
