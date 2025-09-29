@@ -1,7 +1,7 @@
 'use server'
 
 import { redirect } from 'next/navigation'
-import { SocialProvider } from './enum'
+import { SocialProvider } from './type'
 
 const BASEURL = process.env.API_URL
 export async function redirectToOAuth(provider: SocialProvider) {

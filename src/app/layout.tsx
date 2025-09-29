@@ -1,9 +1,9 @@
 import type { Metadata } from 'next'
 import './globals.css'
-import { QueryProvider } from '@/shared/providers'
+import { QueryProvider } from '@/app/_providers'
 import Navbar from '@/shared/ui/navbar/Navbar'
 import { GlobalModal } from '@/shared/ui/modal'
-import AuthProvider from '@/shared/providers/auth-provider'
+import AuthProvider from '@/app/_providers/auth-provider'
 
 export const metadata: Metadata = {
   title: {

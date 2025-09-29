@@ -6,16 +6,19 @@ const createFetchOptions = (
   method: string,
   data?: unknown,
   options?: NextFetchOptions
-): NextFetchOptions => ({
-  method,
-  credentials: 'include',
-  headers: {
-    'Content-Type': 'application/json',
-    ...options?.headers
-  },
-  body: data ? JSON.stringify(data) : undefined,
-  ...options
-})
+): NextFetchOptions => {
+  const { headers, ...restOptions } = options || {}
+  return {
+    method,
+    credentials: 'include',
+    headers: {
+      'Content-Type': 'application/json',
+      ...headers
+    },
+    body: data ? JSON.stringify(data) : undefined,
+    ...restOptions
+  }
+}
 
 const handleResponse = async <T>(response: Response): Promise<T> => {
   if (!response.ok) {

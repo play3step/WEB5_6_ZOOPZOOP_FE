@@ -5,7 +5,7 @@ export async function GET(req: Request) {
   const access = url.searchParams.get('accessToken')
   const refresh = url.searchParams.get('refreshToken')
 
-  if (!access) return NextResponse.redirect(new URL('/', url))
+  if (!access) return NextResponse.redirect(new URL('/auth/login', url))
 
   const res = NextResponse.redirect(new URL('/', url))
   res.cookies.set('accessToken', access, {

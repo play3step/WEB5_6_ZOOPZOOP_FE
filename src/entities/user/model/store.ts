@@ -8,16 +8,24 @@ interface UserStore {
   isAuthenticated: boolean
   // action
   setUser: (user: User) => void
+  updateUser: (updates: Partial<User>) => void
   clearUser: () => void
 }
 
 export const useUserStore = create<UserStore>()(
   persist(
-    set => ({
+    (set, _, api) => ({
       user: null,
       isAuthenticated: false,
       setUser: user => set({ user, isAuthenticated: true }),
-      clearUser: () => set({ user: null, isAuthenticated: false })
+      updateUser: updates =>
+        set(state => ({
+          user: state.user ? { ...state.user, ...updates } : null
+        })),
+      clearUser: () => {
+        set({ user: null, isAuthenticated: false })
+        api.persist.clearStorage()
+      }
     }),
     {
       name: 'user-storage',

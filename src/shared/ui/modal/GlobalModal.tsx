@@ -7,6 +7,7 @@ import { ArchiveSelectModal } from './archive/archive-select/ArchiveSelectModal'
 import { AlarmModal } from './alarm/AlarmModal'
 import { CreateSpaceModal } from './create-space/CreateSpaceModal'
 import { CreateFolderModal } from './create-folder/CreateFolderModal'
+import { DeleteAccountModal } from '@/features/auth/ui/DeleteAccountModal'
 
 export const GlobalModal = () => {
   const [type, isOpen] = useModalStore(useShallow(s => [s.type, s.isOpen]))
@@ -24,6 +25,8 @@ export const GlobalModal = () => {
       return <CreateSpaceModal />
     case 'create-folder':
       return <CreateFolderModal />
+    case 'delete-account':
+      return <DeleteAccountModal />
     default:
       return null
   }

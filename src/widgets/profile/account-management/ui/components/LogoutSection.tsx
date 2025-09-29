@@ -1,4 +1,4 @@
-import { LogOut } from 'lucide-react'
+import { LogoutButton } from '@/features/auth'
 
 const LogoutSection = () => {
   return (
@@ -11,10 +11,7 @@ const LogoutSection = () => {
               이 기기에서 계정 연결을 해제합니다
             </p>
           </div>
-          <button className="ml-4 px-4 py-2 bg-gray-800 text-white text-sm font-medium rounded-md hover:bg-gray-700 transition-colors duration-200 flex items-center gap-2">
-            <LogOut size={16} />
-            로그아웃
-          </button>
+          <LogoutButton />
         </div>
       </div>
     </div>
