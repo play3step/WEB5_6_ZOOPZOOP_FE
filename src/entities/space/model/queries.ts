@@ -12,7 +12,7 @@ import {
   updateSpaceNameClient
 } from '../api/space.client'
 import { SpacePagination, SpaceStatus } from './type'
-import { SpaceQueryKey } from './constants'
+import { spaceQueryKeys } from './queryKey'
 
 interface SpaceQuery {
   pagination: {
@@ -28,7 +28,10 @@ export const useSpaceQuery = ({ pagination }: SpaceQuery) => {
     SpacePagination | null,
     Error
   >({
-    queryKey: [SpaceQueryKey, pagination.currentPage, pagination.currentState],
+    queryKey: spaceQueryKeys.state(
+      pagination.currentPage,
+      pagination.currentState
+    ),
     queryFn: () =>
       fetchSpaceListClient({
         page: pagination.currentPage,

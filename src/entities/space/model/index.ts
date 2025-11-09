@@ -12,3 +12,5 @@ export { useSpaceStore } from './store'
 export type * from './type'
 
 export { SPACE_STATUS, SpaceQueryKey } from './constants'
+
+export { spaceQueryKeys } from './queryKey'
